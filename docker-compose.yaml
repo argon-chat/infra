@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  main-db:
+    image: postgres:16.2-alpine3.19
+    restart: on-failure
+    healthcheck:
+      test: "pg_isready -U svck"
+    environment:
+      POSTGRES_DB: svck
+      POSTGRES_USER: svck
+      POSTGRES_PASSWORD: "Password123"
+    volumes:
+      - main-db-data:/var/lib/postgresql/data
+
+  cache:
+    image: eqalpha/keydb
+    restart: on-failure
+    healthcheck:
+      test: "keydb-cli ping"
+
+  rmq:
+    image: rabbitmq:3.9.10-management-alpine
+    restart: on-failure
+    healthcheck:
+      test: "rabbitmqctl node_health_check"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  main-db-data:
