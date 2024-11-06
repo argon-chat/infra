@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: List
+items:
+#  - apiVersion: v1
+#    kind: PersistentVolumeClaim
+#    metadata:
+#      name: redis-pv-claim
+#      namespace: argon
+#    spec:
+#      accessModes:
+#        - ReadWriteOnce
+#      resources:
+#        requests:
+#          storage: 1Gi
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: cache
+      namespace: argon
+      labels:
+        app: cache
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: cache
+      template:
+        metadata:
+          name: cache
+          namespace: argon
+          labels:
+            app: cache
+        spec:
+          containers:
+            - name: cache
+              image: eqalpha/keydb:latest
+              imagePullPolicy: IfNotPresent
+#              volumeMounts:
+#                - name: redis-persistent-storage
+#                  mountPath: /data
+          restartPolicy: Always
+#          volumes:
+#            - name: redis-persistent-storage
+#              persistentVolumeClaim:
+#                claimName: redis-pv-claim
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      namespace: argon
+      name: cache
+    spec:
+      selector:
+        app: cache
+      ports:
+        - protocol: TCP
+          port: 6379
+          targetPort: 6379

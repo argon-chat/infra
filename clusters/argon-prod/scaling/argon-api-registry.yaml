@@ -1,0 +1,11 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: argon-api-registry
+  namespace: flux-system
+spec:
+  secretRef:
+    name: regcred
+  image: ghcr.io/argon-chat/orleans
+  interval: 30s
