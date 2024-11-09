@@ -65,7 +65,7 @@ items:
       namespace: argon
       annotations:
         cert-manager.io/cluster-issuer: lets-encrypt
-#        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+        #        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         nginx.ingress.kubernetes.io/proxy-body-size: 1024m
       labels:
         app: rmq

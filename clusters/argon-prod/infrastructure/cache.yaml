@@ -20,20 +20,18 @@ items:
           labels:
             app: cache
         spec:
-          securityContext:
-            fsGroup: 999
           containers:
             - name: cache
               image: eqalpha/keydb:latest
               imagePullPolicy: IfNotPresent
-#              volumeMounts:
-#                - name: redis-persistent-storage
-#                  mountPath: /data
+          #              volumeMounts:
+          #                - name: redis-persistent-storage
+          #                  mountPath: /data
           restartPolicy: Always
-#          volumes:
-#            - name: redis-persistent-storage
-#              persistentVolumeClaim:
-#                claimName: cache-pv-claim
+  #          volumes:
+  #            - name: redis-persistent-storage
+  #              persistentVolumeClaim:
+  #                claimName: cache-pv-claim
   - apiVersion: v1
     kind: Service
     metadata:

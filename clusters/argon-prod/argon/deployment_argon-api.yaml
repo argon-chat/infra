@@ -19,47 +19,47 @@ spec:
         app: argon-api
     spec:
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
       containers:
-      - name: argon-api
-        image: ghcr.io/argon-chat/orleans:122 # {"$imagepolicy": "flux-system:argon-api-policy"}
-        resources:
-          requests:
-            cpu: "250m"
-            memory: "128Mi"
-          limits:
-            memory: "256Mi"
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name: http
-          containerPort: 8080
-        envFrom:
-        - secretRef:
-            name: argon-api-env
-        env:
-        - name: ASPNETCORE_ENVIRONMENT
-          value: "Production"
-        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
-          value: "true"
-        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
-          value: "true"
-        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
-          value: "in_memory"
-        - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
-          value: "true"
-        - name: HTTP_PORTS
-          value: "8080"
-        - name: OTEL_EXPORTER_OTLP_ENDPOINT
-          value: "http://aspire-dashboard:18889"
-        - name: OTEL_SERVICE_NAME
-          value: "argon-gg-api"
-        - name: ASPNETCORE_URLS
-          value: "http://+:8080;"
-        - name: OTEL_EXPORTER
-          value: "otlp"
-        - name: OTEL_EXPORTER_OTLP_HEADERS
-          valueFrom:
-            secretKeyRef:
-              name: otlp-api-key
-              key: API_KEY
+        - name: argon-api
+          image: ghcr.io/argon-chat/orleans:122 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+            limits:
+              memory: "256Mi"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: argon-api-env
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
+              value: "true"
+            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
+              value: "true"
+            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
+              value: "in_memory"
+            - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
+              value: "true"
+            - name: HTTP_PORTS
+              value: "8080"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://aspire-dashboard:18889"
+            - name: OTEL_SERVICE_NAME
+              value: "argon-gg-api"
+            - name: ASPNETCORE_URLS
+              value: "http://+:8080;"
+            - name: OTEL_EXPORTER
+              value: "otlp"
+            - name: OTEL_EXPORTER_OTLP_HEADERS
+              valueFrom:
+                secretKeyRef:
+                  name: otlp-api-key
+                  key: API_KEY
       terminationGracePeriodSeconds: 180
