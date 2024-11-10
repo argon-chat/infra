@@ -11,6 +11,6 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-    - name: orleans-dashboard
+    - name: orleansd
       port: 22832
       targetPort: 22832
