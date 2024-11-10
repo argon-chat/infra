@@ -22,7 +22,7 @@ spec:
         - name: regcred
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:122 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          image: ghcr.io/argon-chat/orleans:8 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "250m"
