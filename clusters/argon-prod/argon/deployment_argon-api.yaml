@@ -20,6 +20,7 @@ spec:
     spec:
       imagePullSecrets:
         - name: regcred
+      serviceAccountName: orleanssilo
       containers:
         - name: argon-api
           image: ghcr.io/argon-chat/orleans:8 # {"$imagepolicy": "flux-system:argon-api-policy"}
