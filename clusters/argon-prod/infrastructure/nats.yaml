@@ -33,17 +33,17 @@ items:
               envFrom:
                 - configMapRef:
                     name: nats-env
-              volumeMounts:
-                - name: apphost-nats-data
-                  mountPath: /var/lib/nats
-      volumeClaimTemplates:
-        - metadata:
-            name: apphost-nats-data
-          spec:
-            accessModes: [ "ReadWriteOnce" ]
-            resources:
-              requests:
-                storage: 1Gi
+#              volumeMounts:
+#                - name: apphost-nats-data
+#                  mountPath: /var/lib/nats
+#      volumeClaimTemplates:
+#        - metadata:
+#            name: apphost-nats-data
+#          spec:
+#            accessModes: [ "ReadWriteOnce" ]
+#            resources:
+#              requests:
+#                storage: 1Gi
   - apiVersion: v1
     kind: Service
     metadata:
