@@ -31,7 +31,7 @@ items:
               ports:
                 - containerPort: 4222
               envFrom:
-                - configMapRef:
+                - secretRef:
                     name: nats-env
 #              volumeMounts:
 #                - name: apphost-nats-data
