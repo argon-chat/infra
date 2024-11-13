@@ -34,10 +34,10 @@ spec:
           image: ghcr.io/argon-chat/orleans:18 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
-              cpu: "125m"
+              cpu: "250m"
               memory: "128Mi"
             limits:
-              cpu: "250m"
+              cpu: "300m"
               memory: "256Mi"
           imagePullPolicy: IfNotPresent
           ports:
