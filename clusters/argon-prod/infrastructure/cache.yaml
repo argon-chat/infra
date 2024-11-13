@@ -20,8 +20,6 @@ items:
           labels:
             app: cache
         spec:
-          serviceAccountName: orleanssilo
-          automountServiceAccountToken: true
           containers:
             - name: cache
               image: eqalpha/keydb:latest

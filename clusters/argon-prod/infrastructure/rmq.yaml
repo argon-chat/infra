@@ -19,6 +19,7 @@ items:
             app: rmq
         spec:
           serviceAccountName: orleanssilo
+          automountServiceAccountToken: true
           containers:
             - env:
                 - name: RABBITMQ_DEFAULT_PASS
