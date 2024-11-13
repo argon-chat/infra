@@ -20,6 +20,13 @@ items:
           labels:
             app: cache
         spec:
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app: cache
           containers:
             - name: cache
               image: eqalpha/keydb:latest

@@ -20,6 +20,13 @@ items:
           labels:
             app: nats
         spec:
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app: nats
           containers:
             - name: nats
               image: docker.io/library/nats:2.10

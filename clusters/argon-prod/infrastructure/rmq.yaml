@@ -18,8 +18,13 @@ items:
           labels:
             app: rmq
         spec:
-          serviceAccountName: orleanssilo
-          automountServiceAccountToken: true
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app: rmq
           containers:
             - env:
                 - name: RABBITMQ_DEFAULT_PASS
