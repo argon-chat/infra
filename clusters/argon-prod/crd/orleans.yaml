@@ -168,3 +168,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: orleanssilo
+    namespace: argon
