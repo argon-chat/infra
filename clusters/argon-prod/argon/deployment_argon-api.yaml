@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:16 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          image: ghcr.io/argon-chat/orleans:17 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "250m"
