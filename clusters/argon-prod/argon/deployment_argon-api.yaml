@@ -35,9 +35,9 @@ spec:
           resources:
             requests:
               cpu: "250m"
-              memory: "128Mi"
-            limits:
               memory: "256Mi"
+            limits:
+              memory: "512Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
