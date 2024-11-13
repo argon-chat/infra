@@ -163,7 +163,7 @@ metadata:
   namespace: argon
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
+  kind: ClusterRole
   name: orleanssilo
 subjects:
   - kind: ServiceAccount
