@@ -119,7 +119,7 @@ metadata:
   namespace: argon
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: orleanssilo
   namespace: argon
@@ -157,7 +157,7 @@ rules:
       - watch
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: orleanssilo
   namespace: argon
