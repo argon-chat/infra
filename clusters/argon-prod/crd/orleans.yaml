@@ -137,7 +137,7 @@ rules:
       - update
       - patch
       - delete
-  - apiGroups: [ "" ]
+  - apiGroups: [ "*" ]
     resources:
       - pods
       - nodes
