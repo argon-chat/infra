@@ -21,6 +21,11 @@ items:
               image: dpage/pgadmin4:latest
               ports:
                 - containerPort: 80
+              env:
+                - name: PGADMIN_DEFAULT_EMAIL
+                  value: noreply@argon.gl
+                - name: PGADMIN_DEFAULT_PASSWORD
+                  value: admin
               resources:
                 requests:
                   cpu: "250m"
