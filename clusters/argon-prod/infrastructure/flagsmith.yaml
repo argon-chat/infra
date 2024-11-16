@@ -30,8 +30,8 @@ items:
               envFrom:
                 - secretRef:
                     name: flagsmith-env
-              ports:
-                - containerPort: 8000
+#              ports:
+#                - containerPort: 8000
               imagePullPolicy: IfNotPresent
             - name: flagsmith
               image: flagsmith/flagsmith:latest
