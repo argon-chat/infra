@@ -25,7 +25,7 @@ items:
                 - name: PGADMIN_DEFAULT_EMAIL
                   value: noreply@argon.gl
                 - name: PGADMIN_DEFAULT_PASSWORD
-                  value: admin
+                  value: 98c0839f28bddcf3
               resources:
                 requests:
                   cpu: "250m"
