@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: flagsmith
+      namespace: argon
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: flagsmith
+      template:
+        metadata:
+          labels:
+            app: flagsmith
+        spec:
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app: cache
+          containers:
+            - name: flagsmith-processor
+              image: flagsmith/flagsmith:latest
+              command: [ "run-task-processor" ]
+              envFrom:
+                - secretRef:
+                    name: flagsmith-env
+              ports:
+                - containerPort: 8000
+              imagePullPolicy: IfNotPresent
+            - name: flagsmith
+              image: flagsmith/flagsmith:latest
+              ports:
+                - containerPort: 8000
+              envFrom:
+                - secretRef:
+                    name: flagsmith-env
+              imagePullPolicy: IfNotPresent
+              livenessProbe:
+                exec:
+                  command:
+                    - python
+                    - /app/scripts/healthcheck.py
+                initialDelaySeconds: 20
+                periodSeconds: 2
+                timeoutSeconds: 2
+                failureThreshold: 20
+              readinessProbe:
+                exec:
+                  command:
+                    - python
+                    - /app/scripts/healthcheck.py
+                initialDelaySeconds: 20
+                periodSeconds: 2
+                timeoutSeconds: 2
+                failureThreshold: 20
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: flagsmith
+      namespace: argon
+    spec:
+      selector:
+        app: flagsmith
+      ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 8000
+      type: LoadBalancer
