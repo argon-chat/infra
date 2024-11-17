@@ -21,7 +21,7 @@ items:
       name: flux-system
       namespace: flux-system
     spec:
-      interval: 1m0s
+      interval: 30s
       path: ./clusters/argon-prod
       prune: true
       sourceRef:
