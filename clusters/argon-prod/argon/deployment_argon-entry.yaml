@@ -63,4 +63,7 @@ spec:
             secretKeyRef:
               name: otlp-api-key
               key: API_KEY
+        envFrom:
+        - secretRef:
+            name: argon-api-env
       terminationGracePeriodSeconds: 180
