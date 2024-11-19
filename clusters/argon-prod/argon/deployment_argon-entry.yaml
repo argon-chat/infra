@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argon-entry
+  namespace: argon
+  labels:
+    app: argon-entry
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argon-entry
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      namespace: argon
+      labels:
+        app: argon-entry
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      serviceAccountName: orleansclient
+      automountServiceAccountToken: true
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: argon-entry
+      containers:
+      - name: argon-entry
+        image: ghcr.io/argon-chat/entry:59 # {"$imagepolicy": "flux-system:argon-entry-policy"}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Production"
+        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
+          value: "true"
+        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
+          value: "true"
+        - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
+          value: "in_memory"
+        - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
+          value: "true"
+        - name: HTTP_PORTS
+          value: "8080"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://aspire-dashboard:18889"
+        - name: OTEL_SERVICE_NAME
+          value: "argon-gg-entry"
+        - name: ASPNETCORE_URLS
+          value: "http://+:8080;"
+        - name: OTEL_EXPORTER
+          value: "otlp"
+        - name: OTEL_EXPORTER_OTLP_HEADERS
+          valueFrom:
+            secretKeyRef:
+              name: otlp-api-key
+              key: API_KEY
+      terminationGracePeriodSeconds: 180
