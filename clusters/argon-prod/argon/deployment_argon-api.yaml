@@ -31,7 +31,7 @@ spec:
               app: argon-api
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:88 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          image: ghcr.io/argon-chat/orleans:89 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "250m"
