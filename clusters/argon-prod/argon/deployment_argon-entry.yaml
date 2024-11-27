@@ -66,4 +66,7 @@ spec:
         envFrom:
         - secretRef:
             name: argon-api-env
+
+        - secretRef:
+            name: argon-entry-sentry-dsn
       terminationGracePeriodSeconds: 180

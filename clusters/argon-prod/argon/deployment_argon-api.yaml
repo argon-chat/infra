@@ -48,6 +48,8 @@ spec:
           envFrom:
             - secretRef:
                 name: argon-api-env
+            - secretRef:
+                name: argon-api-sentry-dsn
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: "Production"
