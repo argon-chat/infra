@@ -39,8 +39,6 @@ spec:
           containerPort: 8080
         - name: https
           containerPort: 5002
-        - name: nailed
-          containerPort: 5002
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
