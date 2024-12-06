@@ -35,8 +35,6 @@ spec:
         image: ghcr.io/argon-chat/entry:137 # {"$imagepolicy": "flux-system:argon-entry-policy"}
         imagePullPolicy: IfNotPresent
         ports:
-        - name: http
-          containerPort: 8080
         - name: https
           containerPort: 5003
         env:
@@ -50,16 +48,10 @@ spec:
           value: "in_memory"
         - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
           value: "true"
-        - name: HTTP_PORTS
-          value: "8080"
-        - name: HTTPS_PORTS
-          value: "5003"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: "http://aspire-dashboard:18889"
         - name: OTEL_SERVICE_NAME
           value: "argon-gg-entry"
-        - name: ASPNETCORE_URLS
-          value: "http://+:8080;"
         - name: OTEL_EXPORTER
           value: "otlp"
         - name: OTEL_EXPORTER_OTLP_HEADERS

@@ -41,8 +41,6 @@ spec:
               memory: "256Mi"
           imagePullPolicy: IfNotPresent
           ports:
-            - name: http
-              containerPort: 8080
             - name: https
               containerPort: 5001
             - name: orleansd
@@ -63,16 +61,10 @@ spec:
               value: "in_memory"
             - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
               value: "true"
-            - name: HTTP_PORTS
-              value: "8080"
-            - name: HTTPS_PORTS
-              value: "5001"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://aspire-dashboard:18889"
             - name: OTEL_SERVICE_NAME
               value: "argon-gg-api"
-            - name: ASPNETCORE_URLS
-              value: "http://+:8080;"
             - name: OTEL_EXPORTER
               value: "otlp"
             - name: OTEL_EXPORTER_OTLP_HEADERS
