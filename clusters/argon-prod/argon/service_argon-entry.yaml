@@ -14,23 +14,23 @@ spec:
     - name: https
       port: 5002
       targetPort: 5002
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argon-entry-ingress
-  namespace: argon
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-spec:
-  rules:
-    - host: argon-entry.dev
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argon-entry
-                port:
-                  number: 5002
+#---
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: argon-entry-ingress
+#  namespace: argon
+#  annotations:
+#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+#spec:
+#  rules:
+#    - host: argon-entry.dev
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: argon-entry
+#                port:
+#                  number: 5002
