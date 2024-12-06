@@ -43,6 +43,8 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+            - name: https
+              containerPort: 5001
             - name: orleansd
               containerPort: 22832
           envFrom:
@@ -63,6 +65,8 @@ spec:
               value: "true"
             - name: HTTP_PORTS
               value: "8080"
+            - name: HTTPS_PORTS
+              value: "5001"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://aspire-dashboard:18889"
             - name: OTEL_SERVICE_NAME

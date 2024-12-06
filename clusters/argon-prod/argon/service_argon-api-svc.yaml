@@ -11,6 +11,9 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
+    - name: https
+      port: 5001
+      targetPort: 5001
     - name: orleansd
       port: 22832
       targetPort: 22832
