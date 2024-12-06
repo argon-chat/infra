@@ -27,7 +27,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-    - host: argon-api.internal
+    - host: argon-api.dev
       http:
         paths:
           - path: /
