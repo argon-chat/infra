@@ -37,6 +37,8 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+        - name: https
+          containerPort: 8443
         env:
         - name: ASPNETCORE_ENVIRONMENT
           value: "Production"
@@ -50,6 +52,8 @@ spec:
           value: "true"
         - name: HTTP_PORTS
           value: "8080"
+        - name: HTTPS_PORTS
+          value: "8443"
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: "http://aspire-dashboard:18889"
         - name: OTEL_SERVICE_NAME
