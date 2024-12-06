@@ -43,7 +43,8 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
-              containerPort: 5003
+              containerPort: 5002
+              protocol: UDP
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: "Production"
