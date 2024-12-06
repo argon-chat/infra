@@ -32,7 +32,7 @@ spec:
             app: argon-entry
       containers:
       - name: argon-entry
-        image: ghcr.io/argon-chat/entry:134 # {"$imagepolicy": "flux-system:argon-entry-policy"}
+        image: ghcr.io/argon-chat/entry:135 # {"$imagepolicy": "flux-system:argon-entry-policy"}
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
