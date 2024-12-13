@@ -32,7 +32,8 @@ metadata:
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
   rules:
-    - http:
+    - host: entry.argon.prod
+      http:
         paths:
           - path: /
             pathType: ImplementationSpecific
