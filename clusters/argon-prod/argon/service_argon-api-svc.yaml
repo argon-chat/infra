@@ -41,7 +41,7 @@ spec:
     - host: api.argon.gl
       http:
         paths:
-          - path: /api
+          - path: /
             pathType: Prefix # ImplementationSpecific
             backend:
               service:
