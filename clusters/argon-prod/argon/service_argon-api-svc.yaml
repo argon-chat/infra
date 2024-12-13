@@ -42,7 +42,7 @@ spec:
       http:
         paths:
           - path: /
-            pathType: Prefix # ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: argon-api-svc
