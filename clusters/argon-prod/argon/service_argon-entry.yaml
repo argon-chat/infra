@@ -32,7 +32,7 @@ metadata:
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
   rules:
-    - host: entry.argon.prod
+    - host: entry.*
       http:
         paths:
           - path: /
