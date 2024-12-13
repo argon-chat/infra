@@ -32,11 +32,11 @@ metadata:
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
   rules:
-    - #host: entry.argon.gl
+    - host: entry.argon.gl
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: argon-entry
