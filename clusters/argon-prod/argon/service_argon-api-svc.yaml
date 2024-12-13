@@ -22,3 +22,24 @@ spec:
     - name: orleansd
       port: 22832
       targetPort: 22832
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argon-api-ingress
+  namespace: argon
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/enable-http3: "true"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: argon-api-svc
+                port:
+                  number: 5001
