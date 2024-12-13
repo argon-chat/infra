@@ -38,8 +38,7 @@ spec:
 #        - api.argon.gl
 #      secretName: api-tls-secret
   rules:
-    - #host: api.argon.gl
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
