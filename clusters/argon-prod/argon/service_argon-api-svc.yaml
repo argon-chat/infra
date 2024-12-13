@@ -33,12 +33,16 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
+  tls:
+    - hosts:
+        - api.argon.gl
+      secretName: api-tls-secret
   rules:
-    - #host: api.argon.gl
+    - host: api.argon.gl
       http:
         paths:
           - path: /api
-            pathType: ImplementationSpecific
+            pathType: Prefix # ImplementationSpecific
             backend:
               service:
                 name: argon-api-svc
