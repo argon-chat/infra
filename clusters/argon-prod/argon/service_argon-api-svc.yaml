@@ -34,7 +34,7 @@ metadata:
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
   rules:
-    - host: api.*
+    - host: api.argon.gl
       http:
         paths:
           - path: /
