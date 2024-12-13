@@ -11,10 +11,14 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-    - name: https
+    - name: quic
       port: 5001
       targetPort: 5001
       protocol: UDP
+    - name: https
+      port: 5001
+      targetPort: 5001
+      protocol: TCP
     - name: orleansd
       port: 22832
       targetPort: 22832

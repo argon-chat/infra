@@ -11,7 +11,11 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-    - name: https
+    - name: quic
       port: 5002
       targetPort: 5002
       protocol: UDP
+    - name: https
+      port: 5002
+      targetPort: 5002
+      protocol: TCP
