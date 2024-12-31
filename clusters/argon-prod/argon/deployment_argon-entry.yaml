@@ -42,9 +42,12 @@ spec:
               memory: "256Mi"
           imagePullPolicy: IfNotPresent
           ports:
-            - name: https
+            - name: quic
               containerPort: 5002
               protocol: UDP
+            - name: https
+              containerPort: 5002
+              protocol: TCP
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: "Production"
