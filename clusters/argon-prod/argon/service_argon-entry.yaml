@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: argon-entry
+  name: argon-entry-np
   namespace: argon
 spec:
   type: NodePort
