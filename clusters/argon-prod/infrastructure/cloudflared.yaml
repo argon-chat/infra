@@ -71,6 +71,7 @@ spec:
           args:
             - --protocol
             - http2
+            - --http2-origin
             - --token
             - $(CLOUDFLARED_TUNNEL_TOKEN)
           image: cloudflare/cloudflared:latest
