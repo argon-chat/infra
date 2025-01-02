@@ -11,10 +11,10 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-    - name: quic
-      port: 5002
-      targetPort: 5002
-      protocol: UDP
+#    - name: quic
+#      port: 5002
+#      targetPort: 5002
+#      protocol: UDP
     - name: https
       port: 5002
       targetPort: 5002
@@ -28,7 +28,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/enable-http3: "true"
+#    nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
 #  tls:
 #    - hosts:
