@@ -20,28 +20,6 @@ spec:
       targetPort: 5002
       protocol: TCP
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: argon-entry-np
-  namespace: argon
-spec:
-  type: NodePort
-  selector:
-    app: argon-entry
-  ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-    - name: quic
-      port: 5002
-      targetPort: 5002
-      protocol: UDP
-    - name: https
-      port: 5002
-      targetPort: 5002
-      protocol: TCP
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -52,6 +30,10 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/enable-http3: "true"
 spec:
+  tls:
+    - hosts:
+        - api.argon.gl
+      secretName: argon-tls
   rules:
     - host: api.argon.gl
       http:
