@@ -32,7 +32,7 @@ spec:
               app: argon-entry
       containers:
         - name: argon-entry
-          image: ghcr.io/argon-chat/entry:174 # {"$imagepolicy": "flux-system:argon-entry-policy"}
+          image: ghcr.io/argon-chat/entry:175 # {"$imagepolicy": "flux-system:argon-entry-policy"}
           resources:
             requests:
               cpu: "250m"
