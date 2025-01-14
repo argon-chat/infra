@@ -35,11 +35,11 @@ spec:
           image: ghcr.io/argon-chat/entry:181 # {"$imagepolicy": "flux-system:argon-entry-policy"}
           resources:
             requests:
-              cpu: "250m"
-              memory: "128Mi"
-            limits:
               cpu: "300m"
               memory: "256Mi"
+            limits:
+              cpu: "600m"
+              memory: "512Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: quic
