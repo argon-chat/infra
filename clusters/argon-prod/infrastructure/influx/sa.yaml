@@ -25,3 +25,4 @@ subjects:
   - kind: ServiceAccount
     name: telegraf
     namespace: argon
+
