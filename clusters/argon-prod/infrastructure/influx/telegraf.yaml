@@ -27,6 +27,11 @@ spec:
           envFrom:
             - secretRef:
                 name: telegraf-env
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
           command:
             - telegraf
           args:
