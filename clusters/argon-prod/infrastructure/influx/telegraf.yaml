@@ -31,4 +31,4 @@ spec:
             - telegraf
           args:
             - --config
-            - https://flex.svck.dev/api/v2/telegrafs/0e45b8c580632000
+            - $(INFLUX_CONFIG)
