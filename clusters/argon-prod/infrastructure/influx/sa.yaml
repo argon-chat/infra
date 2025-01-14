@@ -9,7 +9,7 @@ kind: ClusterRole
 metadata:
   name: telegraf
 rules:
-  - apiGroups: [""]
+  - apiGroups: ["*"]
     resources: ["*"]
     verbs: ["get", "list", "watch"]
 ---
