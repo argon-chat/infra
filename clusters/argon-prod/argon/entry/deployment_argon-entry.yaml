@@ -6,7 +6,7 @@ metadata:
   labels:
     app: argon-entry
 spec:
-  minReadySeconds: 60
+  minReadySeconds: 10
   replicas: 1
   selector:
     matchLabels:
@@ -78,4 +78,4 @@ spec:
                 name: argon-api-env
             - secretRef:
                 name: argon-entry-sentry-dsn
-      terminationGracePeriodSeconds: 180
+      terminationGracePeriodSeconds: 15

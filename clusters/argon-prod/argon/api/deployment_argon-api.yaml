@@ -6,7 +6,7 @@ metadata:
   labels:
     app: argon-api
 spec:
-  minReadySeconds: 60
+  minReadySeconds: 10
   replicas: 1
   selector:
     matchLabels:
@@ -73,4 +73,4 @@ spec:
                 secretKeyRef:
                   name: otlp-api-key
                   key: API_KEY
-      terminationGracePeriodSeconds: 180
+      terminationGracePeriodSeconds: 15
