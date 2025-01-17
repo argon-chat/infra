@@ -80,4 +80,12 @@ spec:
                 name: argon-api-env
             - secretRef:
                 name: argon-entry-sentry-dsn
+          volumeMounts:
+            - mountPath: /etc/tls
+              name: tls-secret
+              readOnly: true
+      volumes:
+        - name: tls-secret
+          secret:
+            secretName: argon-tls
       terminationGracePeriodSeconds: 15
