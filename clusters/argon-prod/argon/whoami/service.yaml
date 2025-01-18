@@ -8,5 +8,7 @@ spec:
   ports:
     - port: 5678
       targetPort: 80
+      protocol: TCP
+      nodePort: 5678
   selector:
     app: whoami
