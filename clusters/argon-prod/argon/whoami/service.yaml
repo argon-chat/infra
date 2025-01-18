@@ -4,7 +4,7 @@ metadata:
   name: whoami
   namespace: argon
 spec:
-  type: LoadBalancer
+  type: ExternalName
   ports:
     - targetPort: 80
       port: 80
