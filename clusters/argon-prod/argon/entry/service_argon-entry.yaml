@@ -8,9 +8,9 @@ spec:
   selector:
     app: argon-entry
   ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
+    - name: https
+      port: 5002
+      targetPort: 5002
     - name: quic
       port: 5002
       targetPort: 5002
