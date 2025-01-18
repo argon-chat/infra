@@ -11,7 +11,10 @@ spec:
     - name: https
       port: 5002
       targetPort: 5002
+      protocol: TCP
+      nodePort: 30001
     - name: quic
       port: 5002
       targetPort: 5002
       protocol: UDP
+      nodePort: 30001
