@@ -20,6 +20,8 @@ metadata:
     nginx.ingress.kubernetes.io/enable-quic: "true"
     nginx.ingress.kubernetes.io/proxy-keepalive: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header XFD "Test Header Value" always;
 spec:
   tls:
     - hosts:
