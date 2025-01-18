@@ -18,6 +18,8 @@ metadata:
     nginx.ingress.kubernetes.io/http3: "true"
     nginx.ingress.kubernetes.io/enable-http3: "true"
     nginx.ingress.kubernetes.io/enable-quic: "true"
+    nginx.ingress.kubernetes.io/proxy-keepalive: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   tls:
     - hosts:
