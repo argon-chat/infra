@@ -35,4 +35,4 @@ spec:
               service:
                 name: argon-entry
                 port:
-                  number: 5002
+                  number: 443
