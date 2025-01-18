@@ -45,10 +45,10 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - name: quic
-              containerPort: 443
+              containerPort: 5002
               protocol: UDP
             - name: https
-              containerPort: 443
+              containerPort: 5002
               protocol: TCP
           env:
             - name: ASPNETCORE_ENVIRONMENT
