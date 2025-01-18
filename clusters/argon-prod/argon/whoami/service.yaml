@@ -4,7 +4,7 @@ metadata:
   name: whoami
   namespace: argon
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 5678
       targetPort: 80
