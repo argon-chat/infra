@@ -9,9 +9,9 @@ spec:
     app: argon-entry
   ports:
     - name: https
-      port: 443
-      targetPort: 443
+      port: 5002
+      targetPort: 5002
     - name: quic
-      port: 443
-      targetPort: 443
+      port: 5002
+      targetPort: 5002
       protocol: UDP
