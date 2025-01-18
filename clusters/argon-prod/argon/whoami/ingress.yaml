@@ -1,0 +1,22 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: whoami
+  namespace: argon
+spec:
+  ingressClassName: caddy
+  tls:
+    - hosts:
+        - api.argon.gl
+      secretName: argon-tls
+  rules:
+    - host: api.argon.gl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whoami
+                port:
+                  number: 5678
