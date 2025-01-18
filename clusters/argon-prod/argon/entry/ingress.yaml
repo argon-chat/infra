@@ -6,19 +6,6 @@ metadata:
   namespace: argon
   annotations:
     cert-manager.io/cluster-issuer: "lets-encrypt"
-#    nginx.ingress.kubernetes.io/proxy-read-timeout: "36000"
-#    nginx.ingress.kubernetes.io/proxy-send-timeout: "36000"
-#    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-#    nginx.ingress.kubernetes.io/proxy-buffering: "off"
-#    nginx.ingress.kubernetes.io/grpc-backend: "true"
-#    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-#    nginx.ingress.kubernetes.io/quic-redirect: "https"
-#    nginx.ingress.kubernetes.io/quic: "true"
-#    nginx.ingress.kubernetes.io/http3: "true"
-#    nginx.ingress.kubernetes.io/enable-http3: "true"
-#    nginx.ingress.kubernetes.io/enable-quic: "true"
-#    nginx.ingress.kubernetes.io/proxy-keepalive: "true"
-#    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: caddy
   tls:
@@ -29,4 +16,4 @@ spec:
     - host: api.argon.gl
       http:
         paths:
-          - { path: /, pathType: ImplementationSpecific, backend: { service: { name: argon-entry, port: { number: 5002 } } } }
+          - { path: /, pathType: Prefix, backend: { service: { name: argon-entry, port: { number: 5002 } } } }
