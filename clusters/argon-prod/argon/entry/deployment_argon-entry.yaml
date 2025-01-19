@@ -47,9 +47,11 @@ spec:
             - name: quic
               containerPort: 5002
               protocol: UDP
+              hostPort: 443
             - name: https
               containerPort: 5002
               protocol: TCP
+              hostPort: 443
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: "Production"
