@@ -21,6 +21,8 @@ spec:
       labels:
         app: argon-entry
     spec:
+      nodeSelector:
+        entry: "true"
       imagePullSecrets:
         - name: regcred
       serviceAccountName: orleansclient
