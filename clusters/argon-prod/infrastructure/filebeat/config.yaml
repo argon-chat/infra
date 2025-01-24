@@ -13,17 +13,9 @@ data:
           node: ${NODE_NAME}
           hints.enabled: true
           hints.default_config:
-            type: filestream
-            id: kubernetes-container-logs-${data.kubernetes.pod.name}-${data.kubernetes.container.id}
+            type: container
             paths:
-              - /var/log/containers/*-${data.kubernetes.container.id}.log
-            parsers:
-              - container: ~
-            prospector:
-              scanner:
-                fingerprint.enabled: true
-                symlinks: true
-            file_identity.fingerprint: ~
+              - /var/log/containers/*.log
 
     processors:
       - add_cloud_metadata:
