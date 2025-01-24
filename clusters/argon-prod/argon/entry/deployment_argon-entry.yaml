@@ -18,6 +18,10 @@ spec:
   template:
     metadata:
       namespace: argon
+      annotations:
+        co.elastic.logs/json.overwrite_keys: "true"
+        co.elastic.logs/json.add_error_key: "true"
+        co.elastic.logs/json.expand_keys: "true"
       labels:
         app: argon-entry
     spec:
