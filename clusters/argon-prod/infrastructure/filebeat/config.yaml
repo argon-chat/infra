@@ -20,6 +20,16 @@ data:
     processors:
       - add_cloud_metadata:
       - add_host_metadata:
+      - decode_json_fields:
+          when:
+            regexp:
+              message: '^\{.*\}$'
+          fields: [ "message" ]
+          target: ""
+          overwrite_keys: true
+          add_error_key: true
+          expand_keys: true
+          keys_under_root: true
 
     cloud.id: ${ELASTIC_CLOUD_ID}
     cloud.auth: ${ELASTIC_CLOUD_AUTH}
