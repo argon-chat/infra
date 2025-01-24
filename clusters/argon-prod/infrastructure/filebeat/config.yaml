@@ -29,7 +29,6 @@ data:
           overwrite_keys: true
           add_error_key: true
           expand_keys: true
-          keys_under_root: true
 
     cloud.id: ${ELASTIC_CLOUD_ID}
     cloud.auth: ${ELASTIC_CLOUD_AUTH}
