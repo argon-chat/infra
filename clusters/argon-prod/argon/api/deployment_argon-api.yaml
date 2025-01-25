@@ -7,7 +7,7 @@ metadata:
     app: argon-api
 spec:
   minReadySeconds: 10
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: argon-api
@@ -41,11 +41,11 @@ spec:
           image: ghcr.io/argon-chat/orleans:221 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
-              cpu: "500m"
-              memory: "512Mi"
+              cpu: "200m"
+              memory: "128Mi"
             limits:
-              cpu: "700m"
-              memory: "900Mi"
+              cpu: "500m"
+              memory: "256Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
