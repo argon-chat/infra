@@ -37,3 +37,4 @@ data:
       username: ${ELASTICSEARCH_USERNAME}
       password: ${ELASTICSEARCH_PASSWORD}
       ssl.verification_mode: none
+      index: "argon-prod-%{[agent.version]}-%{+yyyy.MM.dd}"
