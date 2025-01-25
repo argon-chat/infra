@@ -39,16 +39,16 @@ spec:
               app: argon-api
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:225 # {"$imagepolicy": "flux-system:argon-api-policy"}
-#          securityContext:
-#            oomScoreAdj: -1000
-#          resources:
-#            requests:
-#              cpu: "200m"
-#              memory: "128Mi"
-#            limits:
-#              cpu: "500m"
-#              memory: "256Mi"
+          image: ghcr.io/argon-chat/orleans:226 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          #          securityContext:
+          #            oomScoreAdj: -1000
+          #          resources:
+          #            requests:
+          #              cpu: "200m"
+          #              memory: "128Mi"
+          #            limits:
+          #              cpu: "500m"
+          #              memory: "256Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
