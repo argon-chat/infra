@@ -31,8 +31,8 @@ data:
 
     cloud.id: ${ELASTIC_CLOUD_ID}
     cloud.auth: ${ELASTIC_CLOUD_AUTH}
-    setup.template.name: "filebeat"
-    setup.template.pattern: "filebeat-*"
+    setup.template.name: "argon-prod"
+    setup.template.pattern: "argon-prod-*"
     output.elasticsearch:
       hosts: [ 'https://${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}' ]
       username: ${ELASTICSEARCH_USERNAME}
