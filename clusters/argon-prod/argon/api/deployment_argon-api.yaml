@@ -14,7 +14,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 0
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -41,11 +41,11 @@ spec:
           image: ghcr.io/argon-chat/orleans:221 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
-              cpu: "200m"
-              memory: "128Mi"
-            limits:
               cpu: "500m"
-              memory: "256Mi"
+              memory: "512Mi"
+            limits:
+              cpu: "700m"
+              memory: "900Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
