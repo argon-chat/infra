@@ -35,6 +35,7 @@ items:
                 - '-js'
                 - '-sd'
                 - '/var/lib/nats'
+                - '-DV'
               ports:
                 - containerPort: 4222
               envFrom:
