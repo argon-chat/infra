@@ -79,6 +79,8 @@ spec:
               value: "argon-gg-entry"
             - name: OTEL_EXPORTER
               value: "otlp"
+            - name: HAS_SINGLE_SILO
+              value: "true"
             - name: OTEL_EXPORTER_OTLP_HEADERS
               valueFrom:
                 secretKeyRef:
