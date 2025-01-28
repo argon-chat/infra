@@ -45,10 +45,10 @@ spec:
           resources:
             requests:
               cpu: "200m"
-              memory: "128Mi"
+              memory: "192Mi"
             limits:
               cpu: "200m"
-              memory: "128Mi"
+              memory: "192Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
