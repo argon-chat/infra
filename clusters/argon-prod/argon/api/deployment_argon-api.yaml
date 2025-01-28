@@ -1,20 +1,18 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: argon-api
   namespace: argon
   labels:
     app: argon-api
 spec:
-  minReadySeconds: 10
-  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: argon-api
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -30,18 +28,19 @@ spec:
         - name: regcred
       serviceAccountName: orleanssilo
       automountServiceAccountToken: true
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app: argon-api
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - argon-api
+              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:244 # {"$imagepolicy": "flux-system:argon-api-policy"}
-          #          securityContext:
-          #            oomScoreAdj: -1000
+          image: ghcr.io/argon-chat/orleans:243 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "200m"
