@@ -47,7 +47,7 @@ spec:
               memory: "192Mi"
             limits:
               cpu: "2"
-              memory: "256Mi"
+              memory: "900Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: https
