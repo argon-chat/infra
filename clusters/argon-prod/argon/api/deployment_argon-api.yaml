@@ -40,7 +40,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:259 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          image: ghcr.io/argon-chat/orleans:260 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "200m"
