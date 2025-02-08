@@ -1,13 +1,13 @@
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: whoami
-#  namespace: argon
-#spec:
-#  type: NodePort
-#  ports:
-#    - targetPort: 80
-#      port: 80
-#      protocol: TCP
-#  selector:
-#    app: whoami
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+  namespace: argon
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      protocol: TCP
+  selector:
+    app: whoami
