@@ -37,6 +37,8 @@ spec:
                     values:
                       - argon-api
               topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        role: "worker"
       containers:
         - name: argon-api
           image: ghcr.io/argon-chat/orleans:281 # {"$imagepolicy": "flux-system:argon-api-policy"}
