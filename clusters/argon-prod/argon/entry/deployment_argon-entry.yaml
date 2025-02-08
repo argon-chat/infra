@@ -46,9 +46,6 @@ spec:
             requests:
               cpu: "200m"
               memory: "512Mi"
-            limits:
-              cpu: "500m"
-              memory: "900Mi"
           imagePullPolicy: IfNotPresent
           ports:
             - name: quic
