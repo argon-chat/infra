@@ -23,7 +23,6 @@ spec:
         co.elastic.logs/json.expand_keys: "true"
         co.elastic.logs/json.keys_under_root: "true"
     spec:
-      priorityClassName: high-priority
       imagePullSecrets:
         - name: regcred
       serviceAccountName: orleanssilo
