@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - api.argon.gl
-        - delta.argon.zone
+        - omega.argon.zone
       secretName: argon-tls
   rules:
     - host: api.argon.gl
