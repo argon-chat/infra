@@ -27,7 +27,7 @@ spec:
         app: argon-entry
     spec:
       nodeSelector:
-        entry: "true"
+        role: "gaylord"
       imagePullSecrets:
         - name: regcred
       serviceAccountName: orleansclient
