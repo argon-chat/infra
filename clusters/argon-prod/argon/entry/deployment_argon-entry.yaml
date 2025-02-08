@@ -1,102 +1,102 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: argon-entry
-  namespace: argon
-  labels:
-    app: argon-entry
-spec:
-  minReadySeconds: 10
-  replicas: 1
-  selector:
-    matchLabels:
-      app: argon-entry
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-  template:
-    metadata:
-      namespace: argon
-      annotations:
-        co.elastic.logs/json.overwrite_keys: "true"
-        co.elastic.logs/json.add_error_key: "true"
-        co.elastic.logs/json.expand_keys: "true"
-        co.elastic.logs/json.keys_under_root: "true"
-      labels:
-        app: argon-entry
-    spec:
-      nodeSelector:
-        entry: "true"
-      imagePullSecrets:
-        - name: regcred
-      serviceAccountName: orleansclient
-      automountServiceAccountToken: true
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app: argon-entry
-      containers:
-        - name: argon-entry
-          image: ghcr.io/argon-chat/entry:281 # {"$imagepolicy": "flux-system:argon-entry-policy"}
-          resources:
-            requests:
-              cpu: "500m"
-              memory: "512Mi"
-            limits:
-              cpu: "700m"
-              memory: "900Mi"
-          imagePullPolicy: IfNotPresent
-          ports:
-            - name: quic
-              containerPort: 5002
-              protocol: UDP
-              hostPort: 443
-            - name: https
-              containerPort: 5002
-              protocol: TCP
-              hostPort: 443
-          env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Production"
-            # default logger to debug
-            - name: Logging__LogLevel__Default
-              value: "Debug"
-            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
-              value: "true"
-            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
-              value: "true"
-            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
-              value: "in_memory"
-            - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
-              value: "true"
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "http://aspire-dashboard:18889"
-            - name: OTEL_SERVICE_NAME
-              value: "argon-gg-entry"
-            - name: OTEL_EXPORTER
-              value: "otlp"
-            - name: HAS_SINGLE_SILO
-              value: "true"
-            - name: OTEL_EXPORTER_OTLP_HEADERS
-              valueFrom:
-                secretKeyRef:
-                  name: otlp-api-key
-                  key: API_KEY
-          envFrom:
-            - secretRef:
-                name: argon-api-env
-            - secretRef:
-                name: argon-entry-sentry-dsn
-          volumeMounts:
-            - mountPath: /etc/tls
-              name: tls-secret
-              readOnly: true
-      volumes:
-        - name: tls-secret
-          secret:
-            secretName: argon-tls
-      terminationGracePeriodSeconds: 15
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: argon-entry
+#  namespace: argon
+#  labels:
+#    app: argon-entry
+#spec:
+#  minReadySeconds: 10
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: argon-entry
+#  strategy:
+#    type: RollingUpdate
+#    rollingUpdate:
+#      maxUnavailable: 1
+#  template:
+#    metadata:
+#      namespace: argon
+#      annotations:
+#        co.elastic.logs/json.overwrite_keys: "true"
+#        co.elastic.logs/json.add_error_key: "true"
+#        co.elastic.logs/json.expand_keys: "true"
+#        co.elastic.logs/json.keys_under_root: "true"
+#      labels:
+#        app: argon-entry
+#    spec:
+#      nodeSelector:
+#        entry: "true"
+#      imagePullSecrets:
+#        - name: regcred
+#      serviceAccountName: orleansclient
+#      automountServiceAccountToken: true
+#      topologySpreadConstraints:
+#        - maxSkew: 1
+#          topologyKey: kubernetes.io/hostname
+#          whenUnsatisfiable: DoNotSchedule
+#          labelSelector:
+#            matchLabels:
+#              app: argon-entry
+#      containers:
+#        - name: argon-entry
+#          image: ghcr.io/argon-chat/entry:281 # {"$imagepolicy": "flux-system:argon-entry-policy"}
+#          resources:
+#            requests:
+#              cpu: "500m"
+#              memory: "512Mi"
+#            limits:
+#              cpu: "700m"
+#              memory: "900Mi"
+#          imagePullPolicy: IfNotPresent
+#          ports:
+#            - name: quic
+#              containerPort: 5002
+#              protocol: UDP
+#              hostPort: 443
+#            - name: https
+#              containerPort: 5002
+#              protocol: TCP
+#              hostPort: 443
+#          env:
+#            - name: ASPNETCORE_ENVIRONMENT
+#              value: "Production"
+#            # default logger to debug
+#            - name: Logging__LogLevel__Default
+#              value: "Debug"
+#            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES
+#              value: "true"
+#            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES
+#              value: "true"
+#            - name: OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY
+#              value: "in_memory"
+#            - name: ASPNETCORE_FORWARDEDHEADERS_ENABLED
+#              value: "true"
+#            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+#              value: "http://aspire-dashboard:18889"
+#            - name: OTEL_SERVICE_NAME
+#              value: "argon-gg-entry"
+#            - name: OTEL_EXPORTER
+#              value: "otlp"
+#            - name: HAS_SINGLE_SILO
+#              value: "true"
+#            - name: OTEL_EXPORTER_OTLP_HEADERS
+#              valueFrom:
+#                secretKeyRef:
+#                  name: otlp-api-key
+#                  key: API_KEY
+#          envFrom:
+#            - secretRef:
+#                name: argon-api-env
+#            - secretRef:
+#                name: argon-entry-sentry-dsn
+#          volumeMounts:
+#            - mountPath: /etc/tls
+#              name: tls-secret
+#              readOnly: true
+#      volumes:
+#        - name: tls-secret
+#          secret:
+#            secretName: argon-tls
+#      terminationGracePeriodSeconds: 15
