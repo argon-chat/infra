@@ -1,25 +1,25 @@
-apiVersion: v1
-kind: List
-items:
-  - apiVersion: image.toolkit.fluxcd.io/v1beta2
-    kind: ImagePolicy
-    metadata:
-      name: argon-api-policy
-      namespace: flux-system
-    spec:
-      imageRepositoryRef:
-        name: argon-api-registry
-      policy:
-        numerical:
-          order: asc
-  - apiVersion: image.toolkit.fluxcd.io/v1beta2
-    kind: ImagePolicy
-    metadata:
-      name: argon-entry-policy
-      namespace: flux-system
-    spec:
-      imageRepositoryRef:
-        name: argon-entry-registry
-      policy:
-        numerical:
-          order: asc
+#apiVersion: v1
+#kind: List
+#items:
+#  - apiVersion: image.toolkit.fluxcd.io/v1beta2
+#    kind: ImagePolicy
+#    metadata:
+#      name: argon-api-policy
+#      namespace: flux-system
+#    spec:
+#      imageRepositoryRef:
+#        name: argon-api-registry
+#      policy:
+#        numerical:
+#          order: asc
+#  - apiVersion: image.toolkit.fluxcd.io/v1beta2
+#    kind: ImagePolicy
+#    metadata:
+#      name: argon-entry-policy
+#      namespace: flux-system
+#    spec:
+#      imageRepositoryRef:
+#        name: argon-entry-registry
+#      policy:
+#        numerical:
+#          order: asc
