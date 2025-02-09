@@ -26,6 +26,11 @@ spec:
       labels:
         app: argon-entry
     spec:
+      tolerations:
+        - key: "ctrl-plane"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       nodeSelector:
         entry: "true"
       imagePullSecrets:
