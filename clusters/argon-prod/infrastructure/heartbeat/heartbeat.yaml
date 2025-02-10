@@ -44,11 +44,7 @@ spec:
               cpu: 200m
               memory: 256Mi
             requests:
-              # for synthetics, 2 full cores is a good starting point for relatively consistent perform of a single concurrent check
-              # For lightweight checks as low as 100m is fine
               cpu: 100m
-              # A high value like this is encouraged for browser based monitors.
-              # Lightweight checks use substantially less, even 128Mi is fine for those.
               memory: 128Mi
           volumeMounts:
             - name: config
@@ -66,5 +62,3 @@ spec:
           hostPath:
             path: /var/lib/heartbeat-data
             type: DirectoryOrCreate
-
----
