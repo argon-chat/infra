@@ -23,6 +23,9 @@ spec:
         co.elastic.logs/json.add_error_key: "true"
         co.elastic.logs/json.expand_keys: "true"
         co.elastic.logs/json.keys_under_root: "true"
+        co.elastic.monitor/type: "http"
+        co.elastic.monitor/hosts: "https://localhost:5002"
+        co.elastic.monitor/schedule: "@every 10s"
       labels:
         app: argon-entry
     spec:
