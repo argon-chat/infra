@@ -16,6 +16,11 @@ spec:
       labels:
         k8s-app: metricbeat
     spec:
+      tolerations:
+        - key: "ctrl-plane"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       serviceAccountName: metricbeat
       terminationGracePeriodSeconds: 30
       hostNetwork: true
