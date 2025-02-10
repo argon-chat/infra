@@ -14,6 +14,11 @@ spec:
       labels:
         k8s-app: filebeat
     spec:
+      tolerations:
+        - key: "ctrl-plane"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       serviceAccountName: filebeat
       terminationGracePeriodSeconds: 30
       hostNetwork: true
