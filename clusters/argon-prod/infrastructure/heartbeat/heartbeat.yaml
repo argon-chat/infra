@@ -1,7 +1,3 @@
-
-
----
-# Deploy singleton instance in the whole cluster for some unique data sources, like kube-state-metrics
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,14 +41,15 @@ spec:
             runAsUser: 0
           resources:
             limits:
-              memory: 1536Mi
+              cpu: 200m
+              memory: 256Mi
             requests:
               # for synthetics, 2 full cores is a good starting point for relatively consistent perform of a single concurrent check
               # For lightweight checks as low as 100m is fine
-              cpu: 2000m
+              cpu: 100m
               # A high value like this is encouraged for browser based monitors.
               # Lightweight checks use substantially less, even 128Mi is fine for those.
-              memory: 1536Mi
+              memory: 128Mi
           volumeMounts:
             - name: config
               mountPath: /etc/heartbeat.yml
