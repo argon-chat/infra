@@ -22,7 +22,7 @@ spec:
         co.elastic.logs/json.add_error_key: "true"
         co.elastic.logs/json.expand_keys: "true"
         co.elastic.logs/json.keys_under_root: "true"
-        co.elastic.monitor/type: "tcp"
+        co.elastic.monitor/type: "http"
         co.elastic.monitor/hosts: "argon-api-svc.argon.svc.cluster.local:5001"
         co.elastic.monitor/schedule: "@every 10s"
         co.elastic.monitor/ssl.verification_mode: "none"
