@@ -22,10 +22,10 @@ spec:
         co.elastic.logs/json.add_error_key: "true"
         co.elastic.logs/json.expand_keys: "true"
         co.elastic.logs/json.keys_under_root: "true"
-#        co.elastic.monitor/type: "http"
-#        co.elastic.monitor/hosts: "argon-api-svc.argon.svc.cluster.local:5001"
-#        co.elastic.monitor/schedule: "@every 10s"
-#        co.elastic.monitor/ssl.verification_mode: "none"
+        #        co.elastic.monitor/type: "http"
+        #        co.elastic.monitor/hosts: "argon-api-svc.argon.svc.cluster.local:5001"
+        #        co.elastic.monitor/schedule: "@every 10s"
+        #        co.elastic.monitor/ssl.verification_mode: "none"
     spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
@@ -53,7 +53,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
         - name: argon-api
-          image: ghcr.io/argon-chat/orleans:281 # {"$imagepolicy": "flux-system:argon-api-policy"}
+          image: ghcr.io/argon-chat/orleans:286 # {"$imagepolicy": "flux-system:argon-api-policy"}
           resources:
             requests:
               cpu: "200m"
