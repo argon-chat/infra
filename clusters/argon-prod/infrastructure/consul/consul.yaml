@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: consul
+  namespace: default
+  labels:
+    app: consul
+spec:
+  selector:
+    matchLabels:
+      app: consul
+  template:
+    metadata:
+      labels:
+        app: consul
+    spec:
+      containers:
+        - name: consul
+          image: consul:latest
+          ports:
+            - containerPort: 8500
+              name: http
+              protocol: TCP
+            - containerPort: 8600
+              name: dns
+              protocol: UDP
+            - containerPort: 8301
+              name: serf-lan
+              protocol: TCP
+            - containerPort: 8301
+              name: serf-lan
+              protocol: UDP
+            - containerPort: 8302
+              name: serf-wan
+              protocol: TCP
+            - containerPort: 8302
+              name: serf-wan
+              protocol: UDP
+            - containerPort: 8300
+              name: server
+              protocol: TCP
+          env:
+            - name: CONSUL_LOCAL_CONFIG
+              value: |
+                {
+                  "datacenter": "argon-dc-ru3",
+                  "retry_join": ["10.10.0.11"],
+                  "server": false,
+                  "client_addr": "0.0.0.0",
+                  "ui": true,
+                  "connect": {
+                    "enabled": false
+                  },
+                  "ports": {
+                    "serf_lan": 8301,
+                    "serf_wan": 8302,
+                    "server": 8300
+                  }
+                }
+          volumeMounts:
+            - name: consul-data
+              mountPath: /consul/data
+      volumes:
+        - name: consul-data
+          emptyDir: {}
+      terminationGracePeriodSeconds: 30
