@@ -14,3 +14,4 @@ spec:
       targetPort: 8500
       protocol: TCP
       nodePort: 30008
+  externalTrafficPolicy: Local
