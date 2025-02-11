@@ -42,21 +42,26 @@ spec:
           env:
             - name: CONSUL_LOCAL_CONFIG
               value: |
-                {
-                  "datacenter": "argon-dc-ru3",
-                  "retry_join": ["10.10.0.11"],
-                  "server": false,
-                  "client_addr": "0.0.0.0",
-                  "ui": true,
-                  "connect": {
-                    "enabled": false
-                  },
-                  "ports": {
-                    "serf_lan": 8301,
-                    "serf_wan": 8302,
-                    "server": 8300
-                  }
-                }
+                global:
+                  datacenter: "argon-dc-ru3"
+                  retryJoin: ["10.10.0.11"]
+
+                server:
+                  enabled: false
+
+                client:
+                  enabled: true
+                  exposeGossipPorts: true
+                  join: ["10.10.0.11"]
+
+                ui:
+                  enabled: true
+
+                connectInject:
+                  enabled: false
+
+                controller:
+                  enabled: false
           volumeMounts:
             - name: consul-data
               mountPath: /consul/data
