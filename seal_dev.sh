@@ -7,6 +7,6 @@
 #
 #kubeseal --format=yaml --cert=pub-sealed-secrets.pem < "$1" > "$2"
 
-for file in .secrets/prod/*.yaml; do
-  kubeseal --format=yaml --cert=pub-sealed-secrets.pem < "$file" > "clusters/argon-prod/secrets/$(basename "$file")"
+for file in .secrets/dev/*.yaml; do
+  kubeseal --format=yaml --cert=pub-sealed-secrets-dev.pem < "$file" > "clusters/argon-dev/secrets/$(basename "$file")"
 done
