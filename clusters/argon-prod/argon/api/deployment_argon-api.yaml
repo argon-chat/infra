@@ -27,6 +27,8 @@ spec:
 #        co.elastic.monitor/schedule: "@every 10s"
 #        co.elastic.monitor/ssl.verification_mode: "none"
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       imagePullSecrets:
         - name: regcred
       serviceAccountName: orleanssilo
