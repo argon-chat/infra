@@ -13,4 +13,3 @@ spec:
       port: 8500
       targetPort: 8500
       protocol: TCP
-  externalTrafficPolicy: Local
