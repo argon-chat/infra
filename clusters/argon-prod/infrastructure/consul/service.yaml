@@ -4,7 +4,7 @@ metadata:
   name: consul
   namespace: default
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: consul
     component: client
@@ -13,5 +13,4 @@ spec:
       port: 8500
       targetPort: 8500
       protocol: TCP
-      nodePort: 30008
   externalTrafficPolicy: Local
