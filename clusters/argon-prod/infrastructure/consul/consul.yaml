@@ -25,16 +25,16 @@ spec:
               name: dns
               protocol: UDP
             - containerPort: 8301
-              name: serf-lan
+              name: serf-lan-tcp
               protocol: TCP
             - containerPort: 8301
-              name: serf-lan
+              name: serf-lan-udp
               protocol: UDP
             - containerPort: 8302
-              name: serf-wan
+              name: serf-wan-tcp
               protocol: TCP
             - containerPort: 8302
-              name: serf-wan
+              name: serf-wan-udp
               protocol: UDP
             - containerPort: 8300
               name: server
