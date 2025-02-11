@@ -47,17 +47,13 @@ spec:
                     "datacenter": "argon-dc-ru3",
                     "retryJoin": ["10.10.0.11"]
                   },
-                  "server": {
-                    "enabled": false
-                  },
+                  "server": false,
                   "client": {
                     "enabled": true,
                     "exposeGossipPorts": true,
                     "join": ["10.10.0.11"]
                   },
-                  "ui": {
-                    "enabled": true
-                  },
+                  "ui": true,
                   "connectInject": {
                     "enabled": false
                   },
