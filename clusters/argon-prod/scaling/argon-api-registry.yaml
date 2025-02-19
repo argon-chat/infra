@@ -10,7 +10,7 @@ items:
       secretRef:
         name: regcred
       image: ghcr.io/argon-chat/orleans
-      interval: 30s
+      interval: 1m30s
   - apiVersion: image.toolkit.fluxcd.io/v1beta2
     kind: ImageRepository
     metadata:
@@ -20,4 +20,4 @@ items:
       secretRef:
         name: regcred
       image: ghcr.io/argon-chat/entry
-      interval: 30s
+      interval: 1m30s
